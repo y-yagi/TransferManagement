@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent" tools:context="xyz.yyagi.transfermanagement.RegisterFragment">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+          <TextView
+              android:layout_width="150dp"
+              android:layout_height="37dp"
+              android:text="支払い年月: "
+              android:textSize="20dp"
+              android:textColor="@color/main_color"
+              android:layout_gravity="center"
+              android:id="@+id/text_view_1" />
+
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/year"
+                android:entries="@array/spinner_values_year"
+                android:layout_toRightOf="@+id/text_view_1"
+                android:layout_gravity="center_vertical" />
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/month"
+                android:layout_toRightOf="@+id/year"
+                android:entries="@array/spinner_values_month"
+                android:layout_gravity="center_vertical" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="種別: "
+                android:textSize="20dp"
+                android:textColor="@color/main_color"
+                android:id="@+id/text_view_2" />
+
+          <Spinner
+              android:layout_width="wrap_content"
+              android:layout_height="39dp"
+              android:id="@+id/type"
+              android:entries="@array/spinner_values_type"
+              android:layout_toRightOf="@+id/text_view_2"
+              android:layout_gravity="center_vertical" />
+
+        </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登録"
+        android:id="@+id/button_regist"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
