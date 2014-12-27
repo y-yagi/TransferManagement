@@ -1,5 +1,6 @@
 package xyz.yyagi.transfermanagement;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -49,11 +50,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         String month = mMonthSpinner.getSelectedItem().toString();
 
         if (TransferData.isExist(type, year, month)) {
-            Toast.makeText(getActivity(), "そのデータは既に登録済みです", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "そのデータは既に登録済みです", Toast.LENGTH_SHORT).show();
         } else {
             TransferData transferData = new TransferData(type, year, month);
             transferData.save();
-            Toast.makeText(getActivity(), "データを登録しました", Toast.LENGTH_LONG).show();
+            ((MainActivity)getActivity()).resetTransferDataList();
+            Toast.makeText(getActivity(), "データを登録しました", Toast.LENGTH_SHORT).show();
         }
     }
 }

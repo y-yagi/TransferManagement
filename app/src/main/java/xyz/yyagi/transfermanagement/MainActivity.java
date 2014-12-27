@@ -1,6 +1,8 @@
 package xyz.yyagi.transfermanagement;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.ActionBar;
@@ -16,6 +18,10 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +29,8 @@ import android.widget.Toast;
 public class MainActivity extends Activity implements ActionBar.TabListener {
 
     ViewPager mViewPager;
+    AbsListView mListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +117,16 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    public void resetTransferDataList() {
+        List<TransferData> mDataList = TransferData.findWithQuery(TransferData.class, "select * from Transfer_data order by id DESC limit 20");
+        ListAdapter mAdapter = new ArrayAdapter<TransferData>(this, android.R.layout.simple_list_item_1, android.R.id.text1, mDataList);
+        if (mListView == null) {
+            mListView = (AbsListView) findViewById(android.R.id.list);
+        }
+        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+    }
+
 
     public static class SimpleFragment extends Fragment {
 

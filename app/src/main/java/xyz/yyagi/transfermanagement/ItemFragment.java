@@ -96,7 +96,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
                     public void onClick(DialogInterface dialog, int which) {
                         TransferData transferData = mDataList.get(position);
                         transferData.delete();
-                        resetDataList();
+                        ((MainActivity)getActivity()).resetTransferDataList();
                         Toast.makeText(getActivity(), "削除しました", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -104,6 +104,7 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        // DO NOTHING
                     }
                 });
         alertDialogBuilder.setCancelable(true);
@@ -139,10 +140,12 @@ public class ItemFragment extends Fragment implements AbsListView.OnItemClickLis
         public void onFragmentInteraction(String id);
     }
 
-    public void resetDataList() {
-        mDataList = TransferData.findWithQuery(TransferData.class, "select * from Transfer_data order by id DESC limit 20");
-        mAdapter = new ArrayAdapter<TransferData>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, mDataList);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+    public void resetTransferDataList() {
+        /*
+       mDataList = TransferData.findWithQuery(TransferData.class, "select * from Transfer_data order by id DESC limit 20");
+       mAdapter = new ArrayAdapter<TransferData>(getActivity(),
+               android.R.layout.simple_list_item_1, android.R.id.text1, mDataList);
+       ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+       */
     }
 }
