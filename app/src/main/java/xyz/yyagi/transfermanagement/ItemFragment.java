@@ -19,8 +19,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import xyz.yyagi.transfermanagement.dummy.DummyContent;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
