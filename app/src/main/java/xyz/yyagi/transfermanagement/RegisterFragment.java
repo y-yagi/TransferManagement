@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class RegisterFragment extends Fragment implements View.OnClickListener{
     private Spinner mTypeSpinner;
     private Spinner mYearSpinner;
@@ -28,6 +30,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         mTypeSpinner = (Spinner)view.findViewById(R.id.type);
         mYearSpinner = (Spinner)view.findViewById(R.id.year);
         mMonthSpinner= (Spinner)view.findViewById(R.id.month);
+
+        Calendar now = Calendar.getInstance();
+        mYearSpinner.setSelection(1);  // TODO: don't use magic number
+        mMonthSpinner.setSelection(now.get(Calendar.MONTH));
 
         registryButton.setOnClickListener(this);
 
